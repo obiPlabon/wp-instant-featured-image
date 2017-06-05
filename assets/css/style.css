@@ -1,0 +1,53 @@
+.RapidFeaturedImageController {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	padding: 5px;
+	border: 1px solid #e1e1e1;
+	background-color: #fff;
+}
+
+.RapidFeaturedImageController .dashicons {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.striped > tbody > :nth-child(2n) .RapidFeaturedImageController {
+	background-color: #f9f9f9;
+}
+
+.RapidFeaturedImageController__holder {
+	margin: 0;
+	padding: 0;
+}
+
+.RapidFeaturedImageController__image {
+	max-width: 100%;
+	height: auto;
+}
+
+.RapidFeaturedImageController__button {
+	position: absolute;
+	bottom: 0;
+	border: 0;
+	padding: 2px;
+	cursor: pointer;
+	color: #fff;
+	opacity: .9;
+	transition: opacity .2s;
+}
+
+.RapidFeaturedImageController__button:hover,
+.RapidFeaturedImageController__button:focus {
+	opacity: 1;
+}
+
+.RapidFeaturedImageController__button--add {
+	left: 0;
+	background-color: #46b450;
+}
+
+.RapidFeaturedImageController__button--delete {
+	right: 0;
+	background-color: #ffb900;
+}
