@@ -1,35 +1,35 @@
-;(function ($) {
+;( function( $ ) {
 	'use strict';
 
-	$(document).ready(function() {
-		var $RFIC_column = $('.column-rfic');
+	$( function() {
+		var $ifi = $( '.column-rfic' );
 
-		$RFIC_column.on('click', '.js-RapidFeaturedImageController__add', function() {
-			open_image_uploader(this);
-		});
+		$ifi.on( 'click', '.js-wp-ifi__add', function() {
+			open_image_uploader( this );
+		} );
 
-		$RFIC_column.on('click', '.js-RapidFeaturedImageController__delete', function() {
-			var $delete_button = $(this),
-				post_id = $delete_button.data('post_id'),
-				nonce = $delete_button.data('nonce'),
-				$wrapper = $delete_button.parent('.RapidFeaturedImageController'),
-				$add_button = $wrapper.find('.js-RapidFeaturedImageController__add'),
-				$image_holder = $wrapper.find('.RapidFeaturedImageController__holder');
+		$ifi.on( 'click', '.js-RapidFeaturedImageController__delete', function() {
+			var $removeButton = $( this ),
+				post_id = $removeButton.data( 'post_id' ),
+				nonce = $removeButton.data( 'nonce' ),
+				$wrapper = $removeButton.parent( '.wp-ifi' ),
+				$add_button = $wrapper.find( '.js-wp-ifi__add' ),
+				$imageWrapper = $wrapper.find( '.wp-ifi__figure' );
 
 			$.post(
-				RFIC.ajaxurl,
+				WP_IFI.ajaxurl,
 				{
 					action: 'rfic_delete_featured_image',
 					post_id: post_id,
 					nonce: nonce
 				}
 			).done(function(res) {
-				$image_holder.html('');
+				$imageWrapper.html('');
 				$delete_button.hide();
 				$add_button.attr({
 					'data-image_id': '',
-					'title': RFIC.btnTextNormal
-				}).find('.screen-reader-text').text(RFIC.btnTextNormal);
+					'title': WP_IFI.btnTextNormal
+				}).find('.screen-reader-text').text(WP_IFI.btnTextNormal);
 			});
 		});
 	});
@@ -42,7 +42,7 @@
 			nonce = $add_button.data('nonce'),
 			$wrapper = $add_button.parent('.RapidFeaturedImageController'),
 			$delete_button = $wrapper.find('.js-RapidFeaturedImageController__delete'),
-			$image_holder = $wrapper.find('.RapidFeaturedImageController__holder');
+			$imageWrapper = $wrapper.find('.RapidFeaturedImageController__holder');
 
 		if (undefined !== file_frame) {
 			file_frame.open();
@@ -50,12 +50,12 @@
 		}
 
 		file_frame = wp.media.frames.file_frame = wp.media({
-			title: RFIC.modalTitle,
+			title: WP_IFI.modalTitle,
 			library: {
 				type: 'image'
 			},
 			button: {
-				text: RFIC.modalBtnTextNormal
+				text: WP_IFI.modalBtnTextNormal
 			},
 			multiple: false
 		});
@@ -66,7 +66,7 @@
 
 			if (image_data.id) {
 				$.post(
-					RFIC.ajaxurl,
+					WP_IFI.ajaxurl,
 					{
 						action: 'rfic_add_featured_image',
 						image_id: image_data.id,
@@ -75,11 +75,11 @@
 					}
 				).done(function(res) {
 					image_src = ( image_data.sizes.thumbnail ) ? image_data.sizes.thumbnail.url : image_data.url;
-					$image_holder.html('<img class="RapidFeaturedImageController__image" src="' + image_src + '">');
+					$imageWrapper.html('<img class="RapidFeaturedImageController__image" src="' + image_src + '">');
 					$add_button.attr({
 						'data-image_id': image_data.id,
-						'title': RFIC.btnTextEdit
-					}).find('.screen-reader-text').text(RFIC.btnTextEdit);
+						'title': WP_IFI.btnTextEdit
+					}).find('.screen-reader-text').text(WP_IFI.btnTextEdit);
 
 					if ($delete_button.is(':hidden')) {
 						$delete_button.show();

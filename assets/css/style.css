@@ -1,4 +1,4 @@
-.RapidFeaturedImageController {
+.wp-ifi {
 	position: relative;
 	width: 80px;
 	height: 80px;
@@ -6,27 +6,22 @@
 	border: 1px solid #e1e1e1;
 	background-color: #fff;
 }
-
-.RapidFeaturedImageController .dashicons {
+.wp-ifi .dashicons {
 	font-size: 16px;
 	line-height: 20px;
 }
-
-.striped > tbody > :nth-child(2n) .RapidFeaturedImageController {
+.striped > tbody > :nth-child(2n) .wp-ifi {
 	background-color: #f9f9f9;
 }
-
-.RapidFeaturedImageController__holder {
+.wp-ifi__figure {
 	margin: 0;
 	padding: 0;
 }
-
-.RapidFeaturedImageController__image {
+.wp-ifi__image {
 	max-width: 100%;
 	height: auto;
 }
-
-.RapidFeaturedImageController__button {
+.wp-ifi__button {
 	position: absolute;
 	bottom: 0;
 	border: 0;
@@ -36,18 +31,15 @@
 	opacity: .9;
 	transition: opacity .2s;
 }
-
-.RapidFeaturedImageController__button:hover,
-.RapidFeaturedImageController__button:focus {
+.wp-ifi__button:hover,
+.wp-ifi__button:focus {
 	opacity: 1;
 }
-
-.RapidFeaturedImageController__button--add {
+.wp-ifi__button--add {
 	left: 0;
 	background-color: #46b450;
 }
-
-.RapidFeaturedImageController__button--delete {
+.wp-ifi__button--remove {
 	right: 0;
 	background-color: #ffb900;
 }
